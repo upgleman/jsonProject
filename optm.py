@@ -5,6 +5,7 @@ import requests
 
 optm_logger = logging.getLogger("optmRequest")
 
+
 def optm_request(dstUrl, insRequest, orderId):
     optmRequest = f'/api/V1/{insRequest.requestCntrId}/{insRequest.requestZoneId}/' \
                   f'order/{insRequest.requestOrderDate}/{orderId}/request'

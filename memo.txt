@@ -1,10 +1,19 @@
 #공통
 zoneSubject= "01회차 (온라인)"
 #개발
+
+    srcSelect = 'local'
+    srcUser = 'test01'
+    selectCntrId='0000000187'
+    selectZoneId='0000000000'
+    selectOrderId = '000000023981'
+    selectOrderDate='20230224'
+
+    zoneSubject= "01회차 테스트"
     dstRequest = 'local'
     dstUser = 'test01'
     requestCntrId = '0000000187'
-    requestZoneId = '0000000000'
+    requestZoneId = '0000001120'
     requestOrderDate = selectOrderDate
 
 #TB

@@ -18,3 +18,7 @@ class Request(object):
         self.requestZoneId = requestZoneId
         self.requestOrderDate = requestOrderDate
         self.zoneSubject = zoneSubject
+        self.seq = False
+
+    def set_seq(self, seq):
+        self.seq = seq
