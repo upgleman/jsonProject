@@ -1,0 +1,15 @@
+#공통
+zoneSubject= "01회차 (온라인)"
+#개발
+    dstRequest = 'local'
+    dstUser = 'test01'
+    requestCntrId = '0000000187'
+    requestZoneId = '0000000000'
+    requestOrderDate = selectOrderDate
+
+#TB
+    dstRequest = 'tb'
+    dstUser = 'kttest01'
+    requestCntrId = '0000000078'
+    requestZoneId = '0000001741'
+    requestOrderDate = '20230226'
