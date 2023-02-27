@@ -18,7 +18,9 @@ class Request(object):
         self.requestZoneId = requestZoneId
         self.requestOrderDate = requestOrderDate
         self.zoneSubject = zoneSubject
-        self.seq = False
+        self.seq = False #select => request
+        self.optm = False
 
-    def set_seq(self, seq):
+    def set_flag(self, seq, optm):
         self.seq = seq
+        self.optm = optm

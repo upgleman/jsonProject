@@ -62,7 +62,7 @@ if __name__=='__main__':
     insSelect = Select(srcSelect, srcUser,selectCntrId, selectZoneId, selectOrderDate, selectOrderId, zoneSubject)
     insRequest = Request(dstRequest, dstUser, requestCntrId, requestZoneId, requestOrderDate, zoneSubject)
     #바로연동하려면
-    insRequest.set_seq(True)
+    insRequest.set_flag(True, True)
 
     main_logger.info("srcURL: {url}".format(url=str(srcUrl)))
     rst = orderSelect.select(srcUrl,insSelect)
