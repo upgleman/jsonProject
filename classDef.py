@@ -1,25 +1,24 @@
 class Select(object):
-    def __init__(self, srcSelect, srcUser,
-                 selectCntrId, selectZoneId, selectOrderDate, selectOrderId, zoneSubject):
-        self.srcSelect = srcSelect
-        self.srcUser = srcUser
-        self.selectCntrId = selectCntrId
-        self.selectZoneId = selectZoneId
-        self.selectOrderDate = selectOrderDate
-        self.selectOrderId = selectOrderId
-        self.zoneSubject = zoneSubject
+    def __init__(self, init):
+        self.srcSelect = init['srcSelect']
+        self.srcUser = init['srcUser']
+        self.selectCntrId = init['selectCntrId']
+        self.selectZoneId = init['selectZoneId']
+        self.selectOrderDate = init['selectOrderDate']
+        self.selectOrderId = init['selectOrderId']
+        self.zoneSubject = init['zoneSubject']
 
 
 class Request(object):
-    def __init__(self, dstRequest, dstUser, requestCntrId, requestZoneId, requestOrderDate, zoneSubject):
-        self.dstRequest = dstRequest
-        self.dstUser = dstUser
-        self.requestCntrId = requestCntrId
-        self.requestZoneId = requestZoneId
-        self.requestOrderDate = requestOrderDate
-        self.zoneSubject = zoneSubject
-        self.seq = False  # select => request
-        self.optmFlag = False
+    def __init__(self, init):
+        self.dstRequest = init['dstRequest']
+        self.dstUser = init['dstUser']
+        self.requestCntrId = init['requestCntrId']
+        self.requestZoneId = init['requestZoneId']
+        self.requestOrderDate = init['requestOrderDate']
+        self.zoneSubject = init['zoneSubject']
+        self.seq = False  #조회 후 연속적으로 주문 요청 여부
+        self.optmFlag = False #최적화 요청 활성화 여부
 
     def set_flag(self, seq, optmFlag):
         self.seq = seq

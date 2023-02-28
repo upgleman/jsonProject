@@ -2,6 +2,13 @@ import logging
 
 key_logger = logging.getLogger("keyMatching")
 
+
+url_dict = {
+    'local':'http://localhost:8092',
+    'tb':'https://devopenapilgl.lodix.co.kr',
+    'prd':'https://openapilgl.lodix.co.kr'
+}
+
 key_head = {
     'local' : {
         'test01':'f7c5e8c6f73b1bb2f0f3b357eed8c95f2b6b387e9dbb07915904ff8253dccc29'
@@ -15,10 +22,12 @@ key_head = {
     }
 }
 
-def getKey(base, user) :
+def getUrl(host) :
+    return url_dict[host]
+
+def getKey(host, user) :
     try :
-        return key_head[base][user]
+        return key_head[host][user]
     except:
         key_logger.error("Key 없음")
         return
-

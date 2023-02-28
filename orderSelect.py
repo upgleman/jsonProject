@@ -1,7 +1,7 @@
 import logging
 import parsing as ps
 import requests
-import keyMatching
+import matching
 
 sel_logger = logging.getLogger("orderSelect")
 
@@ -15,7 +15,7 @@ def select(url, insSelect):
     # jsonData = None
     payload = ""
     # headers 초기화
-    headers = {"CertNum": keyMatching.getKey(insSelect.srcSelect, insSelect.srcUser)}
+    headers = {"CertNum": matching.getKey(insSelect.srcSelect, insSelect.srcUser)}
 
     response = requests.request("GET", url, headers=headers, data=payload)
 

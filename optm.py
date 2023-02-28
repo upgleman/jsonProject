@@ -1,6 +1,6 @@
 import logging
 import json
-import keyMatching
+import matching
 import requests
 
 optm_logger = logging.getLogger("optmRequest")
@@ -17,7 +17,7 @@ def optm_request(dstUrl, insRequest, orderId):
         optm_logger.info("Optimization Option read")
 
     headers = {'Content-Type': 'application/json; charset=utf-8',
-               "CertNum": keyMatching.getKey(insRequest.dstRequest, insRequest.dstUser)}
+               "CertNum": matching.getKey(insRequest.dstRequest, insRequest.dstUser)}
 
     response = requests.request("POST", url, headers=headers, data=payload)
 

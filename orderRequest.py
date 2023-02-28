@@ -1,7 +1,7 @@
 import os
 import logging
 import json
-import keyMatching
+import matching
 import requests
 import parsing as ps
 import optm
@@ -36,7 +36,7 @@ def req_function(dstUrl, insRequest, reqJson=None, reqFile=None):
     # print(payload)
     # headers 초기화
     headers = {'Content-Type': 'application/json; charset=utf-8'}
-    headers["CertNum"] = keyMatching.getKey(insRequest.dstRequest, insRequest.dstUser)
+    headers["CertNum"] = matching.getKey(insRequest.dstRequest, insRequest.dstUser)
     response = requests.request("POST", url, headers=headers, data=payload)
 
     if response.status_code == 200:
