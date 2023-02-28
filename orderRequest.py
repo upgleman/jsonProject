@@ -46,7 +46,7 @@ def req_function(dstUrl, insRequest, reqJson=None, reqFile=None):
         orderResData = ps.parsing_response(jsonData)
         orderId = orderResData[0]
         # 최적화 함수 요청 조건  TB 및 상용만
-        if re.findall(r'lodix', dstUrl):
+        if bool(re.findall(r'lodix', dstUrl)) & insRequest.optmFlag:
             req_logger.info("Only TB | PRD optimization request OK")
             optm.optm_request(dstUrl, insRequest, orderId)
 
@@ -58,9 +58,9 @@ def req_function(dstUrl, insRequest, reqJson=None, reqFile=None):
                 req_logger.info("Dispatch Json 파일 생성 완료")
 
 
-def request(dstUrl, reqJson, insRequest):
+def request(dstUrl, reqJson, insRequest, filename):
     res = None
-    filename = "orderAPI_" + str(insRequest.zoneSubject) + ".json"
+    # filename = "orderAPI_" + str(insRequest.zoneSubject) +  + ".json"
 
     if reqJson:
         # 초기화

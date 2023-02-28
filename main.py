@@ -19,8 +19,7 @@ url_dict = {
 }
 
 if __name__=='__main__':
-    #주문조회 받기 => Source 정하기
-    #주문 생성 하기 => Target 정하기
+
     main_logger = logging.getLogger("main")
 
     # srcSelect = 'prd'
@@ -41,19 +40,19 @@ if __name__=='__main__':
     # requestCntrId = '0000000078'
     # requestZoneId = '0000001741'
     # requestOrderDate = '20230227'
-    srcSelect = 'local'
-    srcUser = 'test01'
-    selectCntrId='0000000187'
-    selectZoneId='0000000000'
-    selectOrderId = '000000059535'
-    selectOrderDate='20230224'
+    srcSelect = 'prd'
+    srcUser = 'lglmart001'
+    selectCntrId='0000000263'
+    selectZoneId='0000000354'
+    selectOrderId = '000000025765'
+    selectOrderDate='20230228'
+    zoneSubject= "01회차 (온라인)"
 
-    zoneSubject= "01회차 테스트"
-    dstRequest = 'local'
-    dstUser = 'test01'
-    requestCntrId = '0000000187'
-    requestZoneId = '0000001120'
-    requestOrderDate = '20230224'
+    dstRequest = 'tb'
+    dstUser = 'kttest01'
+    requestCntrId = '0000000218'
+    requestZoneId = '0000001748'
+    requestOrderDate = '20230228'
 
     #호출
     srcUrl = url_dict.get(srcSelect)
@@ -64,11 +63,15 @@ if __name__=='__main__':
     #바로연동하려면
     insRequest.set_flag(True, True)
 
+
     main_logger.info("srcURL: {url}".format(url=str(srcUrl)))
-    rst = orderSelect.select(srcUrl,insSelect)
+    rst = orderSelect.select(srcUrl, insSelect)
 
     main_logger.info("dstURL: {url}".format(url=str(dstUrl)))
-    res = orderRequest.request(dstUrl, rst, insRequest)
+
+    filename = "orderAPI_" + str(insRequest.zoneSubject) + insSelect.selectOrderId + ".json"
+
+    res = orderRequest.request(dstUrl, rst, insRequest, filename)
     # print(res)
 
 
