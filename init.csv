@@ -1,0 +1,2 @@
+srcSelect,srcUser,selectCntrId,selectZoneId,selectOrderDate,selectOrderId,dstRequest,dstUser,requestCntrId,requestZoneId,requestOrderDate,zoneSubject
+prd,lglmart001,0000000265,0000000245,20230301,000000026066,tb,kttest01,0000000219,0000001749,20230301,01회차 (온라인)

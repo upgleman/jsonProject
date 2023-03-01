@@ -7,28 +7,17 @@ parsing_logger = logging.getLogger("parsing")
 def parsing_select(res, zoneSubject):
     data = res['data']  # 딕션너리
     data2 = res['data']['orderDetl']  # 리스트
-    # data3 = res['data']['orderDetl'][0]
-    # parsing_logger.info("['data']: {data}".format(data=str(type(data))))
-
     parsing_logger.info("['orderDetl']: {data2}".format(data2=str(type(data2))))
-    # print("['orderItem']:"+str(data3)+"\t타입:"+str(type(data3)))
-
-    # for key,val in data.items(): #딕션너리 출력
-    #     print("{key}:".format(key=key))
-    #     print("{value}".format(value = val))
-    cnt = 0
 
     znName = re.search(r'\w+', zoneSubject)
-    parsing_logger.info("destName postfix : {znName}".format(znName=znName.group()))
+    parsing_logger.info("Dest Name Infix : {znName}".format(znName=znName.group()))
+
+    cnt = 0
     for dic in data2:
-        # print(list)
-        # print(list.get("orderDetlId"))
-        # print(dic['orderDetlId'])
         del (dic['orderDetlId'])  # orderDetlId 삭제
         del (dic['destId'])  # destId 삭제
         dic['destNm'] = "dest" + str(znName.group()) + str(cnt)
         for item in dic['orderItem']:
-            # print(str(type(item))) # 딕션너리
             del (item['orderDetlItemId'])  # orderDetlItemId 삭제
         cnt += 1
 

@@ -15,8 +15,7 @@ if __name__=='__main__':
 
     main_logger = logging.getLogger("main")
     init = pd.read_csv("init.csv", encoding='utf-8', dtype=object)
-    init = init.squeeze() #1차원화
-    print(type(init.selectOrderDate))
+    init = init.squeeze() # dataframe => series
 
     srcUrl = matching.getUrl(init['srcSelect'])
     main_logger.info("srcURL: {url}".format(url=str(srcUrl)))
@@ -26,13 +25,13 @@ if __name__=='__main__':
     insSelect = Select(init)
     insRequest = Request(init)
 
-    # 조회 후 연속적으로 주문 요청 여부 , 최적화 요청 여부
-    insRequest.set_flag(True, False)
+    #주문 정보 조회 후 연속적으로 주문 요청 여부 , 최적화 요청 활성화 여부
+    insRequest.set_flag(True, True)
 
-    rst = orderSelect.select(srcUrl, insSelect)
-    #주문요청할 파일명
-    filename = "orderAPI_" + str(insRequest.zoneSubject) + insSelect.selectOrderId + ".json"
+    filename = "orderAPI_" + str(insRequest.zoneSubject) + insSelect.selectOrderId + '.json'
 
-    res = orderRequest.request(dstUrl, rst, insRequest, filename)
+    rstSelect = orderSelect.select(srcUrl, insSelect, filename)
+    # print(rstSelect)
+    orderRequest.request(dstUrl, insRequest, filename)
 
 
