@@ -39,7 +39,7 @@ def parsing_response(res):
     orderDetlData = res['data']['orderDetl']
     #     print(orderId)
     for orderDetl in orderDetlData:
-        del (orderDetl['orderDetltem'])
+        del (orderDetl['orderDetlItem'])
         orderDetl['firstOrderNum'] = orderDetl["orderDetlId"]
         #뒷자리 다르게 보이기 위함
         lastOrderNum = int(orderDetl["orderDetlId"]) + 1111
