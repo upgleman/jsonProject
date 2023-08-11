@@ -47,12 +47,16 @@ def req_function(dstUrl, insRequest, reqFile=None):
             req_logger.info("Only TB | PRD optimization request OK")
             optm.optm_request(dstUrl, insRequest, orderId)
 
+        #배차 확정 json 생성
+
+        """
         dispatchFile = "distPatchAPI_" + insRequest.zoneSubject + str(orderId) + ".json"
 
         if not os.path.isfile(dispatchFile):
             with open(dispatchFile, 'w', encoding="utf-8") as file:
                 json.dump(orderResData[1], file, ensure_ascii=False, indent="\t")
                 req_logger.info("Dispatch Json 파일 생성 완료")
+        """
     else:
         req_logger.info("Fail order request")
         return

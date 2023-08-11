@@ -13,6 +13,9 @@ def parsing_select(res, zoneSubject):
     parsing_logger.info("Dest Name Infix : {znName}".format(znName=znName.group()))
 
     cnt = 0
+
+    #개인정보 비식별 처리
+    """
     for dic in data2:
         del (dic['orderDetlId'])  # orderDetlId 삭제
         del (dic['destId'])  # destId 삭제
@@ -20,6 +23,14 @@ def parsing_select(res, zoneSubject):
         for item in dic['orderItem']:
             del (item['orderDetlItemId'])  # orderDetlItemId 삭제
         cnt += 1
+    """
+    # 개인정보 비식별 처리
+
+    for dic in data2:
+        del (dic['orderDetlId'])  # orderDetlId 삭제
+        del (dic['destId'])  # destId 삭제
+        for item in dic['orderItem']:
+            del (item['orderDetlItemId'])  # orderDetlItemId 삭제
 
     return data
 
